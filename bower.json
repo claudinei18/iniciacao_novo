@@ -1,0 +1,22 @@
+{
+  "name": "controller",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "claudinei18 <claudineigom18@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "ngprogress": "^1.1.3"
+  }
+}
