@@ -8,7 +8,8 @@ angular.module('controller', ['ngProgress'])
     .controller('SearchCtrl', function ($scope, $rootScope, $http, ngProgressFactory) {
         $scope.progressbar = ngProgressFactory.createInstance();
 
-        $scope.progressbar.setColor('#3340f7');
+        $scope.progressbar.setColor('#ea853c');
+        $scope.progressbar.setHeight('6px');
         $scope.progressbar.start();
 
         $scope.searchMethod = function () {
@@ -24,9 +25,7 @@ angular.module('controller', ['ngProgress'])
                           'Accept': 'text/plain'}
             }).then(function (response) {
                 console.log(response)
-                var x = response.data;
-                var y = JSON.stringify(x)
-                console.log(y)
+                $scope.answer = response.data;
             });
 
         };
