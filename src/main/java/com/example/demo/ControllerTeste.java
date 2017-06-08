@@ -31,6 +31,7 @@ public class ControllerTeste {
             auxFinal += aux3[i] + " ";
         }
         auxFinal += aux6;
+        auxFinal = auxFinal.toLowerCase();
 
         JSONArray array = new JSONArray();
 
@@ -45,6 +46,8 @@ public class ControllerTeste {
 
         JSONObject obj = new JSONObject();
         obj.put("dbPedia", dto.getDbPedia().get("dbPedia"));
+        obj.put("link", dto.getDbPedia().get("link"));
+
         array.put(obj);
 
         List<DTOItem> list = dto.getListPaginas();

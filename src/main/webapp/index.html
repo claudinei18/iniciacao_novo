@@ -21,7 +21,7 @@
     <script src="index.js"></script>
     <style>
         .jumbotron {
-            background-color: #f4511e;
+            background-color: #0091f7;
             color: #fff;
             padding: 100px 25px;
         }
@@ -35,12 +35,12 @@
         }
 
         .logo-small {
-            color: #f4511e;
+            color: #0091f7;
             font-size: 50px;
         }
 
         .logo {
-            color: #f4511e;
+            color: #0091f7;
             font-size: 200px;
         }
 
@@ -58,15 +58,15 @@
 
         .carousel-control.right, .carousel-control.left {
             background-image: none;
-            color: #f4511e;
+            color: #0091f7;
         }
 
         .carousel-indicators li {
-            border-color: #f4511e;
+            border-color: #0091f7;
         }
 
         .carousel-indicators li.active {
-            background-color: #f4511e;
+            background-color: #0091f7;
         }
 
         .item h4 {
@@ -82,7 +82,7 @@
         }
 
         .panel {
-            border: 1px solid #f4511e;
+            border: 1px solid #0091f7;
             border-radius: 0 !important;
             transition: box-shadow 0.5s;
         }
@@ -92,14 +92,14 @@
         }
 
         .panel-footer .btn:hover {
-            border: 1px solid #f4511e;
+            border: 1px solid #0091f7;
             background-color: #fff !important;
-            color: #f4511e;
+            color: #0091f7;
         }
 
         .panel-heading {
             color: #fff !important;
-            background-color: #f4511e !important;
+            background-color: #0091f7 !important;
             padding: 25px;
             border-bottom: 1px solid transparent;
             border-top-left-radius: 0px;
@@ -123,13 +123,13 @@
 
         .panel-footer .btn {
             margin: 15px 0;
-            background-color: #f4511e;
+            background-color: #0091f7;
             color: #fff;
         }
 
         .navbar {
             margin-bottom: 0;
-            background-color: #f4511e;
+            background-color: #0091f7;
             z-index: 9999;
             border: 0;
             font-size: 12px !important;
@@ -144,7 +144,7 @@
         }
 
         .navbar-nav li a:hover, .navbar-nav li.active a {
-            color: #f4511e !important;
+            color: #0091f7 !important;
             background-color: #fff !important;
         }
 
@@ -189,14 +189,14 @@
     </nav>
 
     <div class="jumbotron text-center" ng-show="!searched">
-        <h1>Company</h1>
-        <p>We specialize in blablabla</p>
+        <h1>The Seeker</h1>
+        <p>We specialize in people and places</p>
         <form class="form-inline">
             <div class="input-group">
-                <input type="text" ng-model="search" class="form-control" size="50" placeholder="Search ..." required>
+                <input type="text" ng-model="search" class="form-control" size="50" required>
                 <div class="input-group-btn">
                     <button type="button" ng-click="searchMethod()"
-                            ng-keydown="($event.which === 13)? searchMethod() : 0" class="btn btn-danger">Subscribe
+                            ng-keydown="($event.which === 13)? searchMethod() : 0" class="btn btn-danger">Search
                     </button>
                 </div>
             </div>
@@ -204,162 +204,171 @@
     </div>
 
     <div class="jumbotron text-center" ng-show="searched">
-
-            <div class="input-group">
-                <input type="text" ng-model="search" class="form-control" size="50" placeholder="Search ..." required>
-                <div class="input-group-btn">
-                    <button type="button" ng-click="searchMethod()"
-                            ng-keydown="($event.which === 13)? searchMethod() : 0" class="btn btn-danger">Subscribe
-                    </button>
-                </div>
+        <div class="input-group">
+            <input type="text" ng-model="search" class="form-control" size="50" required>
+            <div class="input-group-btn">
+                <button type="button" ng-click="searchMethod()"
+                        ng-keydown="($event.which === 13)? searchMethod() : 0" class="btn btn-danger">Search
+                </button>
             </div>
+        </div>
     </div>
 
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+
+    <div class="text-center" ng-show="searched">
+        <h1>{{search}}</h1>
+    </div>
+
+    <a href="#" ng-if="answer.length > 0 && answer[0].link.startsWith('http://dbpedia')" class="list-group-item list-group-item-action flex-column align-items-start active text-center"
+       style="color: black; background-color: white;">
         <div class="d-flex w-100 justify-content-between">
-            dbpedia
-            <h5 class="mb-1">{{answer[0].dbPedia}}</h5>
-            <small>3 days ago</small>
+            <h3 class="mb-1">{{answer[0].dbPedia}}</h3>
         </div>
-        <p class="mb-1">{{link.url}}</p>
-        <small>Donec id elit non mi porta.</small>
+        <h5>Fonte: {{answer[0].link}}</h5>
     </a>
 
-    <div class="list-group" ng-repeat="link in answer | orderBy : '-pesoWat' track by $index">
+    <div class="col-md-8">
+        <div class="list-group" ng-repeat="link in answer | orderBy : '-pesoBM25' track by $index">
 
-        <a ng-href="{{link.link}}" class="list-group-item list-group-item-action flex-column align-items-start active">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{link.titulo}}</h5>
-                <small>{{link.data}}</small>
-            </div>
-            <p class="mb-1">{{link.snippet}}</p>
-            <small>{{link.link}}</small>
-        </a>
+            <a ng-if="$index != 0" ng-href="{{link.link}}"
+               class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{link.titulo}}</h5>
+                    <small>{{link.data}}</small>
+                </div>
+                <p class="mb-1">{{link.snippet}}</p>
+                <small>{{link.link}}</small>
+            </a>
+        </div>
+
     </div>
 
-    <!-- Container (About Section) -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-8">
-                <h2>About Company Page</h2>
-                <h4>Lorem ipsum..</h4>
-                <p>Lorem ipsum..</p>
-                <button class="btn btn-default btn-lg">Get in Touch</button>
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-signal logo"></span>
-            </div>
-        </div>
-    </div>
+    <!--&lt;!&ndash; Container (About Section) &ndash;&gt;-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="row">-->
+            <!--<div class="col-sm-8">-->
+                <!--<h2>About Company Page</h2>-->
+                <!--<h4>Lorem ipsum..</h4>-->
+                <!--<p>Lorem ipsum..</p>-->
+                <!--<button class="btn btn-default btn-lg">Get in Touch</button>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-signal logo"></span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-    <div class="container-fluid bg-grey">
-        <div class="row">
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-globe logo"></span>
-            </div>
-            <div class="col-sm-8">
-                <h2>Our Values</h2>
-                <h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>
-                <p><strong>VISION:</strong> Our vision Lorem ipsum..</p>
-            </div>
-        </div>
-    </div>
+    <!--<div class="container-fluid bg-grey">-->
+        <!--<div class="row">-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-globe logo"></span>-->
+            <!--</div>-->
+            <!--<div class="col-sm-8">-->
+                <!--<h2>Our Values</h2>-->
+                <!--<h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>-->
+                <!--<p><strong>VISION:</strong> Our vision Lorem ipsum..</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-    <!-- Container (Services Section) -->
-    <div class="container-fluid text-center">
-        <h2>SERVICES</h2>
-        <h4>What we offer</h4>
-        <br>
-        <div class="row">
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-off logo-small"></span>
-                <h4>POWER</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-heart logo-small"></span>
-                <h4>LOVE</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-lock logo-small"></span>
-                <h4>JOB DONE</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-        </div>
-        <br><br>
-        <div class="row">
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-leaf logo-small"></span>
-                <h4>GREEN</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-certificate logo-small"></span>
-                <h4>CERTIFIED</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-wrench logo-small"></span>
-                <h4 style="color:#303030;">HARD WORK</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-        </div>
-    </div>
+    <!--&lt;!&ndash; Container (Services Section) &ndash;&gt;-->
+    <!--<div class="container-fluid text-center">-->
+        <!--<h2>SERVICES</h2>-->
+        <!--<h4>What we offer</h4>-->
+        <!--<br>-->
+        <!--<div class="row">-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-off logo-small"></span>-->
+                <!--<h4>POWER</h4>-->
+                <!--<p>Lorem ipsum dolor sit amet..</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-heart logo-small"></span>-->
+                <!--<h4>LOVE</h4>-->
+                <!--<p>Lorem ipsum dolor sit amet..</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-lock logo-small"></span>-->
+                <!--<h4>JOB DONE</h4>-->
+                <!--<p>Lorem ipsum dolor sit amet..</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<br><br>-->
+        <!--<div class="row">-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-leaf logo-small"></span>-->
+                <!--<h4>GREEN</h4>-->
+                <!--<p>Lorem ipsum dolor sit amet..</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-certificate logo-small"></span>-->
+                <!--<h4>CERTIFIED</h4>-->
+                <!--<p>Lorem ipsum dolor sit amet..</p>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4">-->
+                <!--<span class="glyphicon glyphicon-wrench logo-small"></span>-->
+                <!--<h4 style="color:#303030;">HARD WORK</h4>-->
+                <!--<p>Lorem ipsum dolor sit amet..</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <!-- Container (Portfolio Section) -->
-    <div class="container-fluid text-center bg-grey">
+    <div class="container-fluid text-center bg-grey col-md-12" ng-show="images.length > 2">
         <h2>Portfolio</h2><br>
         <h4>What we have created</h4>
         <div class="row text-center">
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="paris.jpg" alt="Paris" width="400" height="300">
+                    <img src="{{images[0].display_sizes[0].uri}}" alt="Paris" width="152" height="200">
                     <p><strong>Paris</strong></p>
-                    <p>Yes, we built Paris</p>
+                    <p>{{images[0].title}}</p>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="newyork.jpg" alt="New York" width="400" height="300">
-                    <p><strong>New York</strong></p>
-                    <p>We built New York</p>
+                    <img src="{{images[1].display_sizes[0].uri}}" alt="Paris" width="152" height="200">
+                    <p><strong>Paris</strong></p>
+                    <p>{{images[1].title}}</p>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
-                    <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-                    <p><strong>San Francisco</strong></p>
-                    <p>Yes, San Fran is ours</p>
+                    <img src="{{images[2].display_sizes[0].uri}}" alt="Paris" width="152" height="200">
+                    <p><strong>Paris</strong></p>
+                    <p>{{images[2].title}}</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Container (Contact Section) -->
-    <div class="container-fluid bg-grey">
+    <div class="container-fluid bg-grey col-md-12">
         <h2 class="text-center">CONTACT</h2>
         <div class="row">
             <div class="col-sm-5">
                 <p>Contact us and we'll get back to you within 24 hours.</p>
-                <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
-                <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-                <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+                <p><span class="glyphicon glyphicon-map-marker"></span> Belo Horizonte - Minas Gerais</p>
+                <p><span class="glyphicon glyphicon-phone"></span> +55 31 9 9999-9999</p>
+                <p><span class="glyphicon glyphicon-envelope"></span> claudinei.mendes@sga.pucminas.br </p>
+                <p><span class="glyphicon glyphicon-envelope"></span> cleberoli@gmail.com </p>
             </div>
             <div class="col-sm-7">
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                        <input class="form-control" id="name" name="name" ng-model="nome" placeholder="Name" type="text"
+                               required>
                     </div>
                     <div class="col-sm-6 form-group">
-                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+                        <input class="form-control" id="email" name="email" ng-model="email" placeholder="Email"
+                               type="email" required>
                     </div>
                 </div>
                 <textarea class="form-control" id="comments" name="comments" placeholder="Comment"
                           rows="5"></textarea><br>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <button class="btn btn-default pull-right" type="submit">Send</button>
+                        <button class="btn btn-default pull-right" ng-click="teste()">Send</button>
                     </div>
                 </div>
             </div>
@@ -387,8 +396,6 @@
             async defer></script>
 
 </div>
-
-<div ng-view></div>
 
 </body>
 </html>

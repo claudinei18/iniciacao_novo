@@ -27,3 +27,4 @@ nbdist/
 bower_components/
 database/
 node_modules/
+database.zip
