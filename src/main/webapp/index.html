@@ -18,12 +18,17 @@
     <script src="dependencias/ngprogress/build/ngprogress.js"></script>
     <link rel="stylesheet" href="dependencias/ngprogress/ngProgress.css">
 
+    <script src="dependencias/angular-bootstrap/ui-bootstrap.min.js"></script>
+
+    <script src="dependencias/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
     <script src="index.js"></script>
     <style>
         .jumbotron {
             background-color: #0091f7;
             color: #fff;
-            padding: 100px 25px;
+            padding-top: 100px;
+            padding-bottom: 100px;
         }
 
         .container-fluid {
@@ -166,32 +171,52 @@
 <div ng-app="controller" ng-controller="SearchCtrl" ng-init="start()">
 
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#myPage">Logo</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#services">SERVICES</a></li>
-                    <li><a href="#portfolio">PORTFOLIO</a></li>
-                    <li><a href="#pricing">PRICING</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
+    <nav class="navbar navbar-default navbar-fixed-top" ng-show="answer.length > 0">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#imagens">IMAGENS</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
+        <div class="col-md-1"></div>
     </nav>
 
     <div class="jumbotron text-center" ng-show="!searched">
         <h1>The Seeker</h1>
         <p>We specialize in people and places</p>
-        <form class="form-inline">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <form class="form-inline">
+                <div class="input-group">
+                    <input type="text" ng-model="search" ng-keydown="$event.keyCode == 13 ? searchMethod() : null" class="form-control" size="100" required>
+                    <div class="input-group-btn">
+                        <button type="button" ng-click="searchMethod()"
+                                class="btn btn-danger">Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+
+    <div class="jumbotron text-center" ng-show="searched">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
             <div class="input-group">
                 <input type="text" ng-model="search" class="form-control" size="50" required>
                 <div class="input-group-btn">
@@ -200,202 +225,162 @@
                     </button>
                 </div>
             </div>
-        </form>
-    </div>
-
-    <div class="jumbotron text-center" ng-show="searched">
-        <div class="input-group">
-            <input type="text" ng-model="search" class="form-control" size="50" required>
-            <div class="input-group-btn">
-                <button type="button" ng-click="searchMethod()"
-                        ng-keydown="($event.which === 13)? searchMethod() : 0" class="btn btn-danger">Search
-                </button>
-            </div>
         </div>
+        <div class="col-md-1"></div>
     </div>
 
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
 
-    <div class="text-center" ng-show="searched">
-        <h1>{{search}}</h1>
-    </div>
 
-    <a href="#" ng-if="answer.length > 0 && answer[0].link.startsWith('http://dbpedia')" class="list-group-item list-group-item-action flex-column align-items-start active text-center"
-       style="color: black; background-color: white;">
-        <div class="d-flex w-100 justify-content-between">
-            <h3 class="mb-1">{{answer[0].dbPedia}}</h3>
-        </div>
-        <h5>Fonte: {{answer[0].link}}</h5>
-    </a>
-
-    <div class="col-md-8">
-        <div class="list-group" ng-repeat="link in answer | orderBy : '-pesoBM25' track by $index">
-
-            <a ng-if="$index != 0" ng-href="{{link.link}}"
-               class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{link.titulo}}</h5>
-                    <small>{{link.data}}</small>
-                </div>
-                <p class="mb-1">{{link.snippet}}</p>
-                <small>{{link.link}}</small>
-            </a>
+        <div class="text-center" ng-show="searched">
+            <h1>{{search}}</h1>
         </div>
 
-    </div>
-
-    <!--&lt;!&ndash; Container (About Section) &ndash;&gt;-->
-    <!--<div class="container-fluid">-->
-        <!--<div class="row">-->
-            <!--<div class="col-sm-8">-->
-                <!--<h2>About Company Page</h2>-->
-                <!--<h4>Lorem ipsum..</h4>-->
-                <!--<p>Lorem ipsum..</p>-->
-                <!--<button class="btn btn-default btn-lg">Get in Touch</button>-->
-            <!--</div>-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-signal logo"></span>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div class="container-fluid bg-grey">-->
-        <!--<div class="row">-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-globe logo"></span>-->
-            <!--</div>-->
-            <!--<div class="col-sm-8">-->
-                <!--<h2>Our Values</h2>-->
-                <!--<h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>-->
-                <!--<p><strong>VISION:</strong> Our vision Lorem ipsum..</p>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--&lt;!&ndash; Container (Services Section) &ndash;&gt;-->
-    <!--<div class="container-fluid text-center">-->
-        <!--<h2>SERVICES</h2>-->
-        <!--<h4>What we offer</h4>-->
-        <!--<br>-->
-        <!--<div class="row">-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-off logo-small"></span>-->
-                <!--<h4>POWER</h4>-->
-                <!--<p>Lorem ipsum dolor sit amet..</p>-->
-            <!--</div>-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-heart logo-small"></span>-->
-                <!--<h4>LOVE</h4>-->
-                <!--<p>Lorem ipsum dolor sit amet..</p>-->
-            <!--</div>-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-lock logo-small"></span>-->
-                <!--<h4>JOB DONE</h4>-->
-                <!--<p>Lorem ipsum dolor sit amet..</p>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<br><br>-->
-        <!--<div class="row">-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-leaf logo-small"></span>-->
-                <!--<h4>GREEN</h4>-->
-                <!--<p>Lorem ipsum dolor sit amet..</p>-->
-            <!--</div>-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-certificate logo-small"></span>-->
-                <!--<h4>CERTIFIED</h4>-->
-                <!--<p>Lorem ipsum dolor sit amet..</p>-->
-            <!--</div>-->
-            <!--<div class="col-sm-4">-->
-                <!--<span class="glyphicon glyphicon-wrench logo-small"></span>-->
-                <!--<h4 style="color:#303030;">HARD WORK</h4>-->
-                <!--<p>Lorem ipsum dolor sit amet..</p>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!-- Container (Portfolio Section) -->
-    <div class="container-fluid text-center bg-grey col-md-12" ng-show="images.length > 2">
-        <h2>Portfolio</h2><br>
-        <h4>What we have created</h4>
-        <div class="row text-center">
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="{{images[0].display_sizes[0].uri}}" alt="Paris" width="152" height="200">
-                    <p><strong>Paris</strong></p>
-                    <p>{{images[0].title}}</p>
-                </div>
+        <a href="#" ng-if="answer.length > 0 && answer[0].link.startsWith('http://dbpedia')"
+           class="list-group-item list-group-item-action flex-column align-items-start active text-center"
+           style="color: black; background-color: white;">
+            <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1">{{answer[0].dbPedia}}</h4>
             </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="{{images[1].display_sizes[0].uri}}" alt="Paris" width="152" height="200">
-                    <p><strong>Paris</strong></p>
-                    <p>{{images[1].title}}</p>
+            <h5>Fonte: {{answer[0].link}}</h5>
+        </a>
+
+        <!-- Container (Imagens Section) -->
+        <div id="imagens" class="container-fluid text-center bg-grey" ng-show="images.length > 2">
+            <h2>Images</h2><br>
+            <div class="text-center">
+                <div class="col-sm-4" style="width: 200px; height: 300px;">
+                    <div class="thumbnail">
+                        <img src="{{images[0].display_sizes[0].uri}}" alt="Paris">
+                        <p>{{images[0].title}}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="{{images[2].display_sizes[0].uri}}" alt="Paris" width="152" height="200">
-                    <p><strong>Paris</strong></p>
-                    <p>{{images[2].title}}</p>
+                <div class="col-sm-4" style="width: 200px; height: 300px;">
+                    <div class="thumbnail">
+                        <img src="{{images[1].display_sizes[0].uri}}" alt="Paris">
+                        <p>{{images[1].title}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="width: 200px; height: 300px;">
+                    <div class="thumbnail">
+                        <img src="{{images[2].display_sizes[0].uri}}" alt="Paris">
+                        <p>{{images[2].title}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="width: 200px; height: 300px;">
+                    <div class="thumbnail">
+                        <img src="{{images[3].display_sizes[0].uri}}" alt="Paris">
+                        <p>{{images[3].title}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="width: 200px; height: 300px;">
+                    <div class="thumbnail">
+                        <img src="{{images[4].display_sizes[0].uri}}" alt="Paris">
+                        <p>{{images[4].title}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="width: 200px; height: 300px;">
+                    <div class="thumbnail">
+                        <img src="{{images[5].display_sizes[0].uri}}" alt="Paris">
+                        <p>{{images[5].title}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="width: 200px; height: 300px;">
+                    <div class="thumbnail">
+                        <img src="{{images[6].display_sizes[0].uri}}" alt="Paris">
+                        <p>{{images[6].title}}</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <br/><br/>
+
+        <div class="col-md-12" ng-show="listMostrar.length > 0">
+            <div class="list-group" ng-repeat="link in listMostrar | orderBy : '-pesoWat' track by $index">
+
+                <div class="list-group-item list-group-item-action flex-column align-items-start active"
+                     target="_blank">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"><b>{{link.titulo}}</b></h5>
+                        <small>{{link.data}}</small>
+                    </div>
+                    <p class="mb-1">{{link.snippet}}</p>
+                    <small><a ng-href="{{link.link}}" target="_blank"> <font color="white">{{link.link}}</font></a></small>
+                </div>
+            </div>
+
+            <ul uib-pagination total-items="bigTotalItems" ng-model="currentPage" max-size="maxSize"
+                class="pagination-sm" boundary-link-numbers="true" rotate="false" items-per-page="10"
+                ng-change="pageChanged()"></ul>
+        </div>
+
+        <div class="alert alert-info" ng-show="listMostrar.length == 0 && searched">
+            <strong>No results found!</strong>
+        </div>
+
     </div>
+    <div class="col-md-1"></div>
 
     <!-- Container (Contact Section) -->
-    <div class="container-fluid bg-grey col-md-12">
-        <h2 class="text-center">CONTACT</h2>
-        <div class="row">
-            <div class="col-sm-5">
-                <p>Contact us and we'll get back to you within 24 hours.</p>
-                <p><span class="glyphicon glyphicon-map-marker"></span> Belo Horizonte - Minas Gerais</p>
-                <p><span class="glyphicon glyphicon-phone"></span> +55 31 9 9999-9999</p>
-                <p><span class="glyphicon glyphicon-envelope"></span> claudinei.mendes@sga.pucminas.br </p>
-                <p><span class="glyphicon glyphicon-envelope"></span> cleberoli@gmail.com </p>
-            </div>
-            <div class="col-sm-7">
-                <div class="row">
-                    <div class="col-sm-6 form-group">
-                        <input class="form-control" id="name" name="name" ng-model="nome" placeholder="Name" type="text"
-                               required>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                        <input class="form-control" id="email" name="email" ng-model="email" placeholder="Email"
-                               type="email" required>
-                    </div>
+    <div id="contact" class="container-fluid bg-grey col-md-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <h2 class="text-center">CONTACT</h2>
+            <div class="row">
+                <div class="col-sm-5">
+                    <p><span class="glyphicon glyphicon-map-marker"></span> Belo Horizonte - Minas Gerais</p>
+                    <p><span class="glyphicon glyphicon-phone"></span> +55 31 3319-4444</p>
+                    <p><span class="glyphicon glyphicon-envelope"></span> claudinei.mendes@sga.pucminas.br </p>
+                    <p><span class="glyphicon glyphicon-envelope"></span> cleberoliveira.d@gmail.com </p>
                 </div>
-                <textarea class="form-control" id="comments" name="comments" placeholder="Comment"
-                          rows="5"></textarea><br>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <button class="btn btn-default pull-right" ng-click="teste()">Send</button>
+                <div class="col-sm-7">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="name" name="name" ng-model="nome" placeholder="Name"
+                                   type="text"
+                                   required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="email" name="email" ng-model="email" placeholder="Email"
+                                   type="email" required>
+                        </div>
+                    </div>
+                    <textarea class="form-control" id="comments" name="comments" placeholder="Comment"
+                              rows="5"></textarea><br>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <button class="btn btn-default pull-right" ng-click="teste()">Send</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-1"></div>
+
+        <!-- Add Google Maps -->
+        <div id="googleMap" style="height:400px;width:100%;"></div>
+        <script>
+            function myMap() {
+                var myCenter = new google.maps.LatLng(-19.9257096, -43.996104);
+                var mapProp = {
+                    center: myCenter,
+                    zoom: 14,
+                    scrollwheel: false,
+                    draggable: false,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                var marker = new google.maps.Marker({position: myCenter});
+                marker.setMap(map);
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMQGIyky0Ut1DtC06WvBfbXuqGsQI4Dp0&callback=myMap"
+                async defer></script>
+
+
     </div>
-
-    <!-- Add Google Maps -->
-    <div id="googleMap" style="height:400px;width:100%;"></div>
-    <script>
-        function myMap() {
-            var myCenter = new google.maps.LatLng(-19.9257096, -43.996104);
-            var mapProp = {
-                center: myCenter,
-                zoom: 14,
-                scrollwheel: false,
-                draggable: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            var marker = new google.maps.Marker({position: myCenter});
-            marker.setMap(map);
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMQGIyky0Ut1DtC06WvBfbXuqGsQI4Dp0&callback=myMap"
-            async defer></script>
-
-</div>
 
 </body>
 </html>

@@ -16,6 +16,8 @@ import java.util.*;
 @RequestMapping("/rest")
 public class ControllerTeste {
 
+
+
     @RequestMapping(value = "/search", method = RequestMethod.POST, produces = "text/plain")
     @ResponseBody
     public String search(@RequestBody String search) {
@@ -32,6 +34,8 @@ public class ControllerTeste {
         }
         auxFinal += aux6;
         auxFinal = auxFinal.toLowerCase();
+
+        BM25.writeLog(auxFinal + " " + new Date().toString());
 
         JSONArray array = new JSONArray();
 
@@ -61,8 +65,10 @@ public class ControllerTeste {
             obj.put("pesoWat", list.get(i).getPesoWatson());
             obj.put("data", list.get(i).getData());
             array.put(obj);
+            System.out.println(obj);
         }
 
+        System.out.println(array.toString());
         return array.toString();
     }
 

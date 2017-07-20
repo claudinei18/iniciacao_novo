@@ -3,15 +3,16 @@ package com.example.demo;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.CollationKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,8 @@ public class BM25 {
 
         List<DTOItem> listDTO = new ArrayList<DTOItem>();
         List<DTOItem> listFinal = new ArrayList<DTOItem>();
+
+        List<DTOItem> decrescente = new ArrayList<DTOItem>();
 
         String termWithoutTrash = termo.replaceAll("[^a-zA-Z ]", "").toLowerCase();
 
@@ -151,12 +154,37 @@ public class BM25 {
 
             }*/
 
+            System.out.println("before");
+            System.out.println(listFinal.get(0).getLink());
+
+            decrescente = listFinal;
+            for(int i = 0; i < decrescente.size(); i++){
+                DTOItem maior = decrescente.get(i);
+                int indexTrocar = i;
+                for(int j = i; j < decrescente.size(); j++){
+                    System.out.println(Double.parseDouble(decrescente.get(j).getPesoBM25()));
+                    System.out.println(Double.parseDouble(maior.getPesoBM25()));
+                    if(Double.parseDouble(decrescente.get(j).getPesoBM25()) > Double.parseDouble(maior.getPesoBM25())){
+                        maior = decrescente.get(j);
+                        indexTrocar = j;
+                        System.out.println("MAIOR");
+                    }
+                }
+                DTOItem aux = decrescente.get(i);
+                decrescente.set(i, maior);
+                decrescente.set(indexTrocar, aux);
+            }
+
+
+            System.out.println("after");
+            System.out.println(decrescente.get(0).getLink());
+
         } catch (Exception e) {
             e.printStackTrace();
             resp.put(termo, 0.0);
         }
 
-        DTO dto = new DTO(resp, dbPedia, listFinal);
+        DTO dto = new DTO(resp, dbPedia, decrescente);
         return dto;
     }
 
@@ -351,6 +379,43 @@ Thailand
             result.put( entry.getKey(), entry.getValue() );
         }
         return result;
+    }
+
+    public static void writeLog(String log){
+        String fileName = System.getProperty("user.dir") + "/database/log.txt";
+        Path path = Paths.get(fileName);
+
+        FileLock lock = null;
+        FileChannel channel = null;
+
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+
+        try{
+            String conteudo = log;
+
+            // true = append file
+            fw = new FileWriter(path.toFile(), true);
+            bw = new BufferedWriter(fw);
+
+            bw.write(conteudo);
+            bw.newLine();
+
+            try {
+                if (bw != null)
+                    bw.close();
+
+                if (fw != null)
+                    fw.close();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }catch (Exception e){
+
+        }
+
+
     }
 
 }

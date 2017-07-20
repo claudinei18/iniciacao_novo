@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('controller', ['ngProgress'])
+angular.module('controller', ['ngProgress', 'ui.bootstrap', 'ui.bootstrap.tpls'])
 
     .controller('SearchCtrl', function ($scope, $rootScope, $http, ngProgressFactory) {
 
@@ -14,7 +14,12 @@ angular.module('controller', ['ngProgress'])
             $scope.progressbar.setColor('#0073c4');
             $scope.progressbar.setHeight('6px');
             $scope.progressbar.start();
+            $scope.currentPage = 1;
         }
+
+        $scope.listMostrar = [];
+        $scope.itemsPerPage = 10;
+        $scope.currentPage = 1;
 
         $scope.images = [];
 
@@ -36,10 +41,23 @@ angular.module('controller', ['ngProgress'])
             }).then(function (response) {
                 console.log(response)
                 $scope.answer = response.data;
+                $scope.totalItems = $scope.answer.length - 1;
+                $scope.bigTotalItems = $scope.answer.length - 1;
+
+                if(response.data.length == 1){
+                    $scope.answer = []
+                    $scope.listMostrar = []
+                }
+
+
+                console.log($scope.teste)
+
+                $scope.pageChanged();
+
             });
 
             $http.get('https://api.gettyimages.com/v3/search/images?fields=id,title,thumb,referral_destinations&sort_order=best&phrase=' + $scope.search, {
-                headers: {'Api-Key': 'acjxx6sctv2xa3ud2g4p9x6u'}
+                headers: {'Api-Key': '6q9uj3695ckk9m4u6cfxjz7e'}
             }).then(function (response) {
                 console.log(response)
                 console.log(response.data.images[1].display_sizes[0].uri)
@@ -72,4 +90,19 @@ angular.module('controller', ['ngProgress'])
         angular.element(document).ready(function () {
             $scope.progressbar.complete();
         });
+
+        $scope.setPage = function (pageNo) {
+            $scope.currentPage = pageNo;
+        };
+
+        $scope.pageChanged = function() {
+            console.log('Page changed to: ' + $scope.currentPage);
+            for(var i = (($scope.currentPage - 1) * $scope.itemsPerPage) + 1, j = 0; i < ( $scope.currentPage - 1) * $scope.itemsPerPage + $scope.itemsPerPage && i < $scope.answer.length; i++, j++){
+                $scope.listMostrar[j] = $scope.answer[i];
+            }
+            console.log($scope.listMostrar)
+        };
+
+        $scope.maxSize = 10;
+        $scope.bigCurrentPage = 1;
     });
