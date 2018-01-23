@@ -40,6 +40,7 @@ angular.module('controller', ['ngProgress', 'ui.bootstrap'])
                 console.log(response)
 
                 $scope.entidades = response.data.hits.hits;
+                $scope.listMostrar = $scope.entidades;
                 console.log($scope.entidades)
 
                 $scope.answer = response.data;

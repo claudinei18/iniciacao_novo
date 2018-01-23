@@ -298,13 +298,24 @@
         <br/><br/>
 
         <div class="col-md-12" ng-show="listMostrar.length > 0">
-            <div class="list-group" ng-repeat="link in listMostrar | orderBy : '-pesoWat' track by $index">
+            <div class="list-group" ng-repeat="link in listMostrar | orderBy : ['_index','_source.originName'] track by $index">
 
                 <div class="list-group-item list-group-item-action flex-column align-items-start active"
                      target="_blank">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><b>{{link.titulo}}</b></h5>
-                        <small>{{link.data}}</small>
+                        <h5 class="mb-1"><b>{{link._source.originName}}</b></h5>
+                        <small>{{link._index}}</small>
+
+                        <p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample{{$index}}" aria-expanded="false" aria-controls="collapseExample">
+                                Link with href
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseExample{{$index}}">
+                            <div class="card card-block">
+                                {{link | json}}
+                            </div>
+                        </div>
                     </div>
                     <p class="mb-1">{{link.snippet}}</p>
                     <small><a ng-href="{{link.link}}" target="_blank"> <font color="white">{{link.link}}</font></a></small>
