@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('controller', ['ngProgress', 'ui.bootstrap', 'ui.bootstrap.tpls'])
+angular.module('controller', ['ngProgress', 'ui.bootstrap'])
 
     .controller('SearchCtrl', function ($scope, $rootScope, $http, ngProgressFactory) {
 
@@ -29,17 +29,19 @@ angular.module('controller', ['ngProgress', 'ui.bootstrap', 'ui.bootstrap.tpls']
             console.log("teste")
             $scope.start();
 
-            $http.post('/rest/search', {
-                search: $scope.search,
-                ajax: true
-            }, {
-                transformRequest: function (data) {
-                    return $.param(data);
-                },
-                headers: {'Content-Type': 'text/plain;',
-                    'Accept': 'text/plain'}
+
+            $http.get('http://localhost:9300/_search?q=*' + $scope.search + '*&from=0&size=10000', {
+                headers: {'Content-Type': 'application/json'}, crossDomain: true
             }).then(function (response) {
+                // With the data succesfully returned, we can resolve promise and we can access it in controller
+                // console.log(data)
+
+                console.log("Response")
                 console.log(response)
+
+                $scope.entidades = response.data.hits.hits;
+                console.log($scope.entidades)
+
                 $scope.answer = response.data;
                 $scope.totalItems = $scope.answer.length - 1;
                 $scope.bigTotalItems = $scope.answer.length - 1;
@@ -50,11 +52,11 @@ angular.module('controller', ['ngProgress', 'ui.bootstrap', 'ui.bootstrap.tpls']
                 }
 
 
-                console.log($scope.teste)
+                // console.log($scope.teste)
 
                 $scope.pageChanged();
-
             });
+
 
             $http.get('https://api.gettyimages.com/v3/search/images?fields=id,title,thumb,referral_destinations&sort_order=best&phrase=' + $scope.search, {
                 headers: {'Api-Key': '6q9uj3695ckk9m4u6cfxjz7e'}
