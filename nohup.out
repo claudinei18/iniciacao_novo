@@ -1,0 +1,242 @@
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:43)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:findMainClass
+:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.2.RELEASE)
+
+2018-01-23 14:30:21.572  INFO 7579 --- [           main] com.example.demo.ControllerApplication   : Starting ControllerApplication on debian with PID 7579 (/home/claudinei/iniciacao_novo/build/classes/main started by claudinei in /home/claudinei/iniciacao_novo)
+2018-01-23 14:30:21.574  INFO 7579 --- [           main] com.example.demo.ControllerApplication   : No active profile set, falling back to default profiles: default
+2018-01-23 14:30:21.602  INFO 7579 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 14:30:21 BRST 2018]; root of context hierarchy
+2018-01-23 14:30:22.432  INFO 7579 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$4d0b26cd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 14:30:22.468  INFO 7579 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2018-01-23 14:30:22.493  INFO 7579 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a87361ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 14:30:22.728  INFO 7579 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 9202 (http)
+2018-01-23 14:30:22.741  INFO 7579 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2018-01-23 14:30:22.742  INFO 7579 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2018-01-23 14:30:22.831  INFO 7579 --- [ost-startStop-1] o.a.c.c.C.[.[localhost].[/esearch]       : Initializing Spring embedded WebApplicationContext
+2018-01-23 14:30:22.831  INFO 7579 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1231 ms
+2018-01-23 14:30:22.974  INFO 7579 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-01-23 14:30:22.976  INFO 7579 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'messageDispatcherServlet' to [/services/*]
+2018-01-23 14:30:22.978  INFO 7579 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-01-23 14:30:22.979  INFO 7579 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-01-23 14:30:22.979  INFO 7579 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-01-23 14:30:22.980  INFO 7579 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-01-23 14:30:23.330  INFO 7579 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-01-23 14:30:23.348  INFO 7579 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-01-23 14:30:23.400  INFO 7579 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-01-23 14:30:23.401  INFO 7579 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-01-23 14:30:23.403  INFO 7579 --- [           main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-01-23 14:30:23.432  INFO 7579 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-01-23 14:30:23.512  INFO 7579 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2018-01-23 14:30:23.597  INFO 7579 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2018-01-23 14:30:23.598  INFO 7579 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@28da7d11
+2018-01-23 14:30:23.787  INFO 7579 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-01-23 14:30:24.022  INFO 7579 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 14:30:21 BRST 2018]; root of context hierarchy
+2018-01-23 14:30:24.095  INFO 7579 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/rest/search],methods=[POST],produces=[text/plain]}" onto public java.lang.String com.example.demo.ControllerTeste.search(java.lang.String)
+2018-01-23 14:30:24.097  INFO 7579 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-01-23 14:30:24.097  INFO 7579 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-01-23 14:30:24.125  INFO 7579 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 14:30:24.126  INFO 7579 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 14:30:24.163  INFO 7579 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 14:30:24.187  INFO 7579 --- [           main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2018-01-23 14:30:24.432  INFO 7579 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-01-23 14:30:24.485  INFO 7579 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 9202 (http)
+2018-01-23 14:30:24.489  INFO 7579 --- [           main] com.example.demo.ControllerApplication   : Started ControllerApplication in 3.091 seconds (JVM running for 3.317)
+2018-01-23 14:30:59.394  INFO 7579 --- [nio-9202-exec-1] o.a.c.c.C.[.[localhost].[/esearch]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-01-23 14:30:59.394  INFO 7579 --- [nio-9202-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-01-23 14:30:59.404  INFO 7579 --- [nio-9202-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 10 ms
+2018-01-23 21:35:54.476  INFO 7579 --- [       Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 14:30:21 BRST 2018]; root of context hierarchy
+2018-01-23 21:35:54.477  INFO 7579 --- [       Thread-4] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-01-23 21:35:54.478  INFO 7579 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+:bootRun FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':bootRun'.
+> Process 'command '/usr/lib/jvm/java-8-oracle/bin/java'' finished with non-zero exit value 143
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 7 hrs 5 mins 40.386 secs
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:43)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:findMainClass
+:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.2.RELEASE)
+
+2018-01-23 21:36:02.062  INFO 9522 --- [           main] com.example.demo.ControllerApplication   : Starting ControllerApplication on debian with PID 9522 (/home/claudinei/iniciacao_novo/build/classes/main started by claudinei in /home/claudinei/iniciacao_novo)
+2018-01-23 21:36:02.065  INFO 9522 --- [           main] com.example.demo.ControllerApplication   : No active profile set, falling back to default profiles: default
+2018-01-23 21:36:02.101  INFO 9522 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 21:36:02 BRST 2018]; root of context hierarchy
+2018-01-23 21:36:02.798  INFO 9522 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7739a95] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 21:36:02.825  INFO 9522 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2018-01-23 21:36:02.842  INFO 9522 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$62dbd596] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 21:36:03.014  INFO 9522 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 9202 (http)
+2018-01-23 21:36:03.022  INFO 9522 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2018-01-23 21:36:03.024  INFO 9522 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2018-01-23 21:36:03.109  INFO 9522 --- [ost-startStop-1] o.a.c.c.C.[.[localhost].[/esearch]       : Initializing Spring embedded WebApplicationContext
+2018-01-23 21:36:03.110  INFO 9522 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1011 ms
+2018-01-23 21:36:03.218  INFO 9522 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-01-23 21:36:03.219  INFO 9522 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'messageDispatcherServlet' to [/services/*]
+2018-01-23 21:36:03.221  INFO 9522 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-01-23 21:36:03.222  INFO 9522 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-01-23 21:36:03.222  INFO 9522 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-01-23 21:36:03.222  INFO 9522 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-01-23 21:36:03.561  INFO 9522 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-01-23 21:36:03.576  INFO 9522 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-01-23 21:36:03.628  INFO 9522 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-01-23 21:36:03.629  INFO 9522 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-01-23 21:36:03.631  INFO 9522 --- [           main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-01-23 21:36:03.661  INFO 9522 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-01-23 21:36:03.740  INFO 9522 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2018-01-23 21:36:03.806  INFO 9522 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2018-01-23 21:36:03.808  INFO 9522 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@799ed4e8
+2018-01-23 21:36:03.994  INFO 9522 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-01-23 21:36:04.214  INFO 9522 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 21:36:02 BRST 2018]; root of context hierarchy
+2018-01-23 21:36:04.279  INFO 9522 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/rest/search],methods=[POST],produces=[text/plain]}" onto public java.lang.String com.example.demo.ControllerTeste.search(java.lang.String)
+2018-01-23 21:36:04.282  INFO 9522 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-01-23 21:36:04.282  INFO 9522 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-01-23 21:36:04.306  INFO 9522 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 21:36:04.306  INFO 9522 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 21:36:04.341  INFO 9522 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 21:36:04.364  INFO 9522 --- [           main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2018-01-23 21:36:04.594  INFO 9522 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-01-23 21:36:04.626  INFO 9522 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 9202 (http)
+2018-01-23 21:36:04.629  INFO 9522 --- [           main] com.example.demo.ControllerApplication   : Started ControllerApplication in 2.776 seconds (JVM running for 3.016)
+2018-01-23 21:37:47.954  INFO 9522 --- [nio-9202-exec-3] o.a.c.c.C.[.[localhost].[/esearch]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-01-23 21:37:47.954  INFO 9522 --- [nio-9202-exec-3] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-01-23 21:37:47.962  INFO 9522 --- [nio-9202-exec-3] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 8 ms
+2018-01-23 21:50:25.388  INFO 9522 --- [       Thread-4] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 21:36:02 BRST 2018]; root of context hierarchy
+2018-01-23 21:50:25.391  INFO 9522 --- [       Thread-4] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-01-23 21:50:25.393  INFO 9522 --- [       Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+:bootRun FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':bootRun'.
+> Process 'command '/usr/lib/jvm/java-8-oracle/bin/java'' finished with non-zero exit value 143
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 14 mins 24.74 secs
+Exception in thread "DisconnectableInputStream source reader" org.gradle.api.UncheckedIOException: java.io.IOException: Bad file descriptor
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:43)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:125)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:255)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:286)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:345)
+	at org.gradle.util.DisconnectableInputStream$1.run(DisconnectableInputStream.java:96)
+	... 1 more
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:findMainClass
+:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.2.RELEASE)
+
+2018-01-23 21:50:32.337  INFO 9785 --- [           main] com.example.demo.ControllerApplication   : Starting ControllerApplication on debian with PID 9785 (/home/claudinei/iniciacao_novo/build/classes/main started by claudinei in /home/claudinei/iniciacao_novo)
+2018-01-23 21:50:32.338  INFO 9785 --- [           main] com.example.demo.ControllerApplication   : No active profile set, falling back to default profiles: default
+2018-01-23 21:50:32.375  INFO 9785 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 21:50:32 BRST 2018]; root of context hierarchy
+2018-01-23 21:50:32.946  INFO 9785 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$b9d14858] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 21:50:32.971  INFO 9785 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2018-01-23 21:50:32.988  INFO 9785 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$15398359] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-23 21:50:33.156  INFO 9785 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 9202 (http)
+2018-01-23 21:50:33.164  INFO 9785 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2018-01-23 21:50:33.165  INFO 9785 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2018-01-23 21:50:33.221  INFO 9785 --- [ost-startStop-1] o.a.c.c.C.[.[localhost].[/esearch]       : Initializing Spring embedded WebApplicationContext
+2018-01-23 21:50:33.221  INFO 9785 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 848 ms
+2018-01-23 21:50:33.297  INFO 9785 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2018-01-23 21:50:33.299  INFO 9785 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'messageDispatcherServlet' to [/services/*]
+2018-01-23 21:50:33.300  INFO 9785 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-01-23 21:50:33.301  INFO 9785 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-01-23 21:50:33.301  INFO 9785 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-01-23 21:50:33.301  INFO 9785 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-01-23 21:50:33.555  INFO 9785 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-01-23 21:50:33.565  INFO 9785 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-01-23 21:50:33.599  INFO 9785 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2018-01-23 21:50:33.600  INFO 9785 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-01-23 21:50:33.601  INFO 9785 --- [           main] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2018-01-23 21:50:33.621  INFO 9785 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-01-23 21:50:33.678  INFO 9785 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2018-01-23 21:50:33.736  INFO 9785 --- [           main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2018-01-23 21:50:33.737  INFO 9785 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@15639440
+2018-01-23 21:50:33.886  INFO 9785 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-01-23 21:50:34.054  INFO 9785 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3444d69d: startup date [Tue Jan 23 21:50:32 BRST 2018]; root of context hierarchy
+2018-01-23 21:50:34.105  INFO 9785 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/rest/search],methods=[POST],produces=[text/plain]}" onto public java.lang.String com.example.demo.ControllerTeste.search(java.lang.String)
+2018-01-23 21:50:34.108  INFO 9785 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-01-23 21:50:34.108  INFO 9785 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-01-23 21:50:34.126  INFO 9785 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 21:50:34.126  INFO 9785 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 21:50:34.151  INFO 9785 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-23 21:50:34.168  INFO 9785 --- [           main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: ServletContext resource [/index.html]
+2018-01-23 21:50:34.338  INFO 9785 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-01-23 21:50:34.369  INFO 9785 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 9202 (http)
+2018-01-23 21:50:34.373  INFO 9785 --- [           main] com.example.demo.ControllerApplication   : Started ControllerApplication in 2.198 seconds (JVM running for 2.377)
+2018-01-23 21:50:46.236  INFO 9785 --- [nio-9202-exec-1] o.a.c.c.C.[.[localhost].[/esearch]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-01-23 21:50:46.236  INFO 9785 --- [nio-9202-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-01-23 21:50:46.245  INFO 9785 --- [nio-9202-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 9 ms

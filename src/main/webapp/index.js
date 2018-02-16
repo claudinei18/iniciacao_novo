@@ -30,7 +30,7 @@ angular.module('controller', ['ngProgress', 'ui.bootstrap'])
             $scope.start();
 
 
-            $http.get('http://localhost:9300/_search?q=*' + $scope.search + '*&from=0&size=10000', {
+            $http.get('http://186.248.79.46:9200/_search?q=*' + $scope.search + '*&from=0&size=10000', {
                 headers: {'Content-Type': 'application/json'}, crossDomain: true
             }).then(function (response) {
                 // With the data succesfully returned, we can resolve promise and we can access it in controller
